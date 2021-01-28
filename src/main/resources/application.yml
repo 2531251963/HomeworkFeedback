@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: testing
+  application:
+    name: homework-feedback
+  jackson:
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+logging:
+  config: classpath:log4j2.yml
+filter:
+  notFilterUrl:
+    - /health
+    - /user/login
+dingding:
+  webhookUrl:

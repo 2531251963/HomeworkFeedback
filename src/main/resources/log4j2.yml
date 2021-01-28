@@ -1,0 +1,43 @@
+Configuration:
+  status: debug
+  # 定义全局变量
+  Properties:
+    Property:
+      - name: log.path
+        value: /mnt/logs/homework-feedback/
+  Appenders:
+    # 控制台日志
+    Console:
+      name: console
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "[%X{request_id}] %-d{yyyy-MM-dd HH:mm:ss} - [%p] [%C{1}:%L %M] %m%n"
+      ThresholdFilter:
+        level: info
+        onMatch: ACCEPT
+        onMismatch: DENY
+    # 文件日志
+    RollingFile:
+      - name: homework-feedback
+        fileName: "${log.path}/homework-feedback.log"
+        filePattern: "${log.path}/homework-feedback_%d{yyyy-MM-dd}.log"
+        PatternLayout:
+          Pattern: "[%X{request_id}] %-d{yyyy-MM-dd HH:mm:ss} - [%p] [%C{1}:%L %M] %m%n"
+        Policies:
+          TimeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+        ThresholdFilter:
+          level: info
+          onMatch: ACCEPT
+          onMismatch: DENY
+  Loggers:
+    Root:
+      level: debug
+      AppenderRef:
+        - ref: console
+        - ref: homework-feedback
+    Logger:
+    - name: com.example.demo.DemoApplication
+      AppenderRef:
+      - ref: console

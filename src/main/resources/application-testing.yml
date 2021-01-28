@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    homework-feedback:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/homeworkFeedback?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+      username: root
+      password: root
+      initial-size: 5
+      min-idle: 5
+      max-active: 30
+      max-wait: 6000
+      test-while-idle: true
+      validation-query: 'select 1 from dual'
+      connect-timeout: 1500
+mybatis:
+  mapper-locations: classpsth:mapper/*.xml
+  type-aliases-package: com.example.demo.dao
+  configuration:
+    map-underscore-to-camel-case: true
