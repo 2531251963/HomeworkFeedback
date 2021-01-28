@@ -25,7 +25,7 @@ public class UserMgrImpl implements UserMgr {
         if (userPo ==null){
             return userBo;
         }
-        return userBo.convertFromUserPo(userPo);
+        return userBo.convertFromUserPoUserId(userPo.getUserId());
     }
 
     @Override

@@ -13,11 +13,22 @@ public class UserBo {
 
     private String email;
 
+    private RoleUserBo roleUserBo;
+
+
+    public  UserBo convertFromUserPoUserId(Long userId) {
+        this.setUserId(userId);
+        return this;
+    }
 
     public  UserBo convertFromUserPo(UserPo user) {
         this.setUserId(user.getUserId());
         this.setUserName(user.getUserName());
         this.setEmail(user.getEmail());
         return this;
+    }
+
+    public void assembleRoleUserBo(RoleUserBo roleUserBo) {
+        this.setRoleUserBo(roleUserBo);
     }
 }
