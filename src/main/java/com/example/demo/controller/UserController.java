@@ -12,6 +12,7 @@ import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * 用户接口
@@ -24,7 +25,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/login")
-    public Response<Token> login(@RequestBody UserDto userDto) {
+    public Response<Token> login(@Valid  @RequestBody UserDto userDto) {
         UserBo userBo = userService.login(userDto.getAccount(), userDto.getPassword());
         if (userBo == null || userBo.getUserId() == null) {
             return Response.error(ResponseCode.VALIDATION_FAILED);

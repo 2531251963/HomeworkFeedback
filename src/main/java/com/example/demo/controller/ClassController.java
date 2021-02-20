@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +35,7 @@ public class ClassController {
     UserService userService;
 
     @PostMapping("/info_list")
-    public Response<List<ClassInfoVo>> infoList(@RequestBody ClassInfoListDto classInfoListDto) {
+    public Response<List<ClassInfoVo>> infoList(@Valid @RequestBody ClassInfoListDto classInfoListDto) {
         List<ClassBo> classBoList = classService.getClassBoList(classInfoListDto.getClassIds());
         List<ClassInfoVo> classInfoVoList = new LinkedList<>();
         classBoList.forEach(x -> {

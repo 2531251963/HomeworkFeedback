@@ -10,9 +10,7 @@ import org.apache.http.util.EntityUtils;
 import java.nio.charset.Charset;
 
 /**
- * @desc 通讯工具类
- * @author wuyadong
- * @date 2019年11月20日18:21:04
+ * @desc HttpUtils
  */
 public class HttpUtils {
 
