@@ -4,7 +4,7 @@ import com.example.demo.dao.UserMapper;
 import com.example.demo.dao.po.UserPo;
 import com.example.demo.mgr.UserMgr;
 import com.example.demo.mgr.bo.UserBo;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 
@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 /**
  *
  **/
-@Component
+@Repository
 public class UserMgrImpl implements UserMgr {
 
 

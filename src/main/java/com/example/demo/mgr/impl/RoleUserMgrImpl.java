@@ -7,7 +7,7 @@ import com.example.demo.dao.po.RoleUserPo;
 import com.example.demo.mgr.RoleUserMgr;
 import com.example.demo.mgr.bo.RoleBo;
 import com.example.demo.mgr.bo.RoleUserBo;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -20,8 +20,7 @@ import java.util.stream.Collectors;
  * @description 用户与角色mgr
  * @date 2021/1/28 17:46
  **/
-@Component
-
+@Repository
 public class RoleUserMgrImpl implements RoleUserMgr {
 
     @Resource

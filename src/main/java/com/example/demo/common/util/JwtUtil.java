@@ -51,7 +51,7 @@ public class JwtUtil {
                 return Response.ok(userId);
             }
             return Response.error(ResponseCode.AUTH_VALIDATION_FAILED);
-        } catch (ExpiredJwtException e) {
+        } catch (Exception e) {
             // 已过期令牌
             return Response.error(ResponseCode.AUTH_VALIDATION_EXPIRE_FAILED);
         }
@@ -76,7 +76,7 @@ public class JwtUtil {
                 return userId;
             }
             return null;
-        } catch (ExpiredJwtException e) {
+        } catch (Exception e) {
             // 已过期令牌
             return null;
         }
