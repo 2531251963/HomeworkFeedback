@@ -5,6 +5,11 @@ spring:
     name: homework-feedback
   jackson:
     property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+  mail:
+    host: smtp.qq.com
+    username: 2531251963@qq.com
+    password: ucppdrhpnkewdhif
+    default-encoding: UTF-8
 logging:
   config: classpath:log4j2.yml
 filter:
@@ -12,4 +17,4 @@ filter:
     - /health
     - /user/login
 dingding:
-  webhookUrl:
+  webhookUrl: https://oapi.dingtalk.com/robot/send?access_token=2b75767b9f59da3f545cbac627159675fbe7fdffea1cef8d8d33366a6f1aa612

@@ -17,7 +17,7 @@ public class Response<T> implements Serializable {
     private int code;
     private String msg;
     private T data;
-    private Long ts;
+    private Long ts =System.currentTimeMillis();
 
 
     public static <T> Response<T> ok() {
@@ -35,13 +35,12 @@ public class Response<T> implements Serializable {
         return buildResponse(responseCode.getCode(), responseCode.getMsg(), null);
     }
     public static <T> Response<T> buildResponse(int code, String msg, T data) {
-        return new Response<>(code, msg, data, System.currentTimeMillis());
+        return new Response<>(code, msg, data);
     }
 
-    public Response(int code, String msg, T data, Long ts) {
+    public Response(int code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
-        this.ts = ts;
     }
 }

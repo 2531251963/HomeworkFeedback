@@ -18,6 +18,8 @@ public class UserMgrImpl implements UserMgr {
 
     @Resource
     UserMapper userMapper;
+    @Resource
+    HomeworkMailSenderMgrImpl homeworkMailSender;
     @Override
     public UserBo getUserInfoByAccount(String account, String password) {
         UserPo userPo = userMapper.getUserByAccount(account, password);

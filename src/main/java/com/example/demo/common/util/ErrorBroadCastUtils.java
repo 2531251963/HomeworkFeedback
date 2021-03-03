@@ -8,7 +8,10 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -50,12 +53,14 @@ public class ErrorBroadCastUtils {
      * @return
      */
     public static String getCaller(ProceedingJoinPoint pjp) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
         // 获取简单类名
         String className = pjp.getSignature().getDeclaringTypeName();
         String simpleClassName = className.substring(className.lastIndexOf(".") + 1);
         // 获取方法名
         String methodName = pjp.getSignature().getName();
-        return simpleClassName + "." + methodName;
+        return request.getMethod() + " " + request.getRequestURI() + "  " + simpleClassName + "." + methodName;
     }
 
     private void broadMarkdownMessage(final String title, final StringBuilder text) {

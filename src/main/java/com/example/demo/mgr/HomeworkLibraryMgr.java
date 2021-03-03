@@ -1,5 +1,9 @@
 package com.example.demo.mgr;
 
+import com.example.demo.mgr.bo.HomeworkBo;
+import com.example.demo.mgr.bo.HomeworkPublishBo;
+import com.example.demo.mgr.bo.problem.AbstractProblemBo;
+
 import java.util.List;
 
 /**
@@ -19,4 +23,36 @@ public interface HomeworkLibraryMgr {
      * 作业更改题目
      */
     boolean updateProblemIds(Long homeworkId, List<Long> problemIdList);
+
+    /**
+     * 获取某个教师的作业库的作业列表
+     */
+    List<HomeworkBo> getHomeworkList(Long userId);
+
+
+    /**
+     * 获取某个教师的作业库的作业信息
+     */
+    HomeworkBo getHomeworkBo(Long homeworkId);
+
+    /**
+     * 创建题目
+     */
+    Long createProblem(AbstractProblemBo abstractProblemBo,Long userId);
+
+
+    /**
+     * 编辑题目
+     */
+    boolean editorProblem(AbstractProblemBo abstractProblemBo);
+
+    /**
+     * 批量获取题目 List<AbstractProblemBo>
+     */
+    List<AbstractProblemBo> getAbstractProblemBoList(List<Long> problemIds);
+
+    /**
+     * 作业发布
+     */
+    boolean homeworkPublish(HomeworkPublishBo homeworkPublishBo);
 }
