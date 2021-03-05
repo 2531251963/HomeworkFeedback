@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author liyihe
  * @description Token
  * @date 2021/1/25 18:56
  **/

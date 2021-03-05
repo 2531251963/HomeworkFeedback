@@ -22,7 +22,7 @@ public interface HomeworkPushJobMapper {
     /**
      * 查询大于当前时间且未通知的任务
      */
-    @Select("select * from homework_push_job where deadline_time > NOW() and status=2")
+    @Select("select * from homework_push_job where deadline_time > unix_timestamp(NOW()) and status=2")
     List<HomeworkPushJobPo> selectUnPushHomeworkJob();
 
     /**

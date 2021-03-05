@@ -1,5 +1,7 @@
 package com.example.demo.mgr;
 
+import com.example.demo.common.bean.PageParam;
+import com.example.demo.common.bean.PageResultInfo;
 import com.example.demo.mgr.bo.HomeworkBo;
 import com.example.demo.mgr.bo.HomeworkPublishBo;
 import com.example.demo.mgr.bo.problem.AbstractProblemBo;
@@ -27,7 +29,7 @@ public interface HomeworkLibraryMgr {
     /**
      * 获取某个教师的作业库的作业列表
      */
-    List<HomeworkBo> getHomeworkList(Long userId);
+    PageResultInfo<HomeworkBo> getHomeworkListPage(Long userId, PageParam pageParam);
 
 
     /**
@@ -54,5 +56,5 @@ public interface HomeworkLibraryMgr {
     /**
      * 作业发布
      */
-    boolean homeworkPublish(HomeworkPublishBo homeworkPublishBo);
+    Long homeworkPublish(HomeworkPublishBo homeworkPublishBo);
 }

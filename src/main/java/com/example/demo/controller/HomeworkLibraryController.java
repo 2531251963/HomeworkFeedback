@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.common.bean.PageParam;
+import com.example.demo.common.bean.PageResultInfo;
 import com.example.demo.common.response.Response;
 import com.example.demo.common.response.ResponseCode;
 import com.example.demo.common.util.JwtUtil;
 import com.example.demo.controller.dto.*;
+import com.example.demo.controller.vo.HomeworkPublishRecordVo;
 import com.example.demo.controller.vo.LibraryHomeworkDetailVo;
 import com.example.demo.controller.vo.LibraryHomeworkVo;
 import com.example.demo.mgr.bo.HomeworkBo;
@@ -40,11 +43,14 @@ public class HomeworkLibraryController {
     }
 
     @GetMapping("/homework_list")
-    public Response<List<LibraryHomeworkVo>> homeworkList(@RequestHeader(value = "token") String token) {
+    public Response<PageResultInfo<LibraryHomeworkVo>> homeworkList(@RequestParam("current_page") Integer currentPage,
+                                                                    @RequestParam("page_size") Integer pageSize,
+                                                                    @RequestHeader(value = "token") String token) {
         Long userId = JwtUtil.getUserId(token);
-        List<HomeworkBo> homeworkBos = homeworkLibraryService.homeworkList(userId);
-        List<LibraryHomeworkVo> libraryHomeworkVos = new LibraryHomeworkVo().convertFromHomeworkBoList(homeworkBos);
-        return Response.ok(libraryHomeworkVos);
+        PageResultInfo<HomeworkBo> homeworkBoPageResultInfo = homeworkLibraryService.homeworkListPage(userId, new PageParam(currentPage, pageSize));
+        List<LibraryHomeworkVo> libraryHomeworkVos = new LibraryHomeworkVo().convertFromHomeworkBoList(homeworkBoPageResultInfo.getList());
+        PageResultInfo<LibraryHomeworkVo> pageResultInfo = new PageResultInfo<>(homeworkBoPageResultInfo,libraryHomeworkVos);
+        return Response.ok(pageResultInfo);
     }
 
     @PostMapping("/create_problem")
@@ -71,5 +77,13 @@ public class HomeworkLibraryController {
         Long userId = JwtUtil.getUserId(token);
         boolean publishHomeworkResult = homeworkLibraryService.publishHomework(publishHomeworkDto.getHomeworkId(), publishHomeworkDto.getClassIds(), publishHomeworkDto.getDeadlineTime(),userId);
         return Response.ok(publishHomeworkResult);
+    }
+
+    @GetMapping("/homework_publish_record_list")
+    public Response<PageResultInfo<HomeworkPublishRecordVo>> homeworkPublishRecordList(@RequestParam("current_page") Integer currentPage,
+                                                                             @RequestParam("page_size") Integer pageSize,
+                                                                             @RequestHeader(value = "token") String token) {
+        Long userId = JwtUtil.getUserId(token);
+        return Response.ok();
     }
 }

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmailContentBo  {
 
+    private Long  userId;
 
     private String email;
 
@@ -18,7 +19,8 @@ public class EmailContentBo  {
 
     private String content;
 
-    public EmailContentBo(String email,String title){
+    public EmailContentBo(Long userId,String email,String title){
+        this.userId=userId;
         this.email=email;
         this.title=title;
     }

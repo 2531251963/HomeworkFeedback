@@ -23,15 +23,15 @@ import java.util.List;
  **/
 @Slf4j
 @Component
-@Data
 public class HomeworkMailSenderMgrImpl implements HomeworkMailSenderMgr {
 
 
     @Autowired
     JavaMailSender mailSender;
 
-    private   MailMessage mailMessage1=new MailMessage(Constant.title1,Constant.template1);
-    private  MailMessage mailMessage2=new MailMessage(Constant.title2,Constant.template2);
+    public  static MailMessage mailMessage1=new MailMessage(Constant.title1,Constant.template1);
+    public  static MailMessage mailMessage2=new MailMessage(Constant.title2,Constant.template2);
+
 
     @Override
     public void sendMail(List<EmailContentBo> emailContentBoList) {

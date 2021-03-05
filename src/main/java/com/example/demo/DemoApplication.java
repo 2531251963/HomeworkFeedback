@@ -6,7 +6,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableAsync
-@EnableScheduling
 @SpringBootApplication(scanBasePackages="com.example.demo.*")
 public class DemoApplication {
 

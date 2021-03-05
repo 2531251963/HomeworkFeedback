@@ -2,6 +2,7 @@ package com.example.demo.mgr.impl;
 
 import com.example.demo.dao.UserMapper;
 import com.example.demo.dao.po.UserPo;
+import com.example.demo.mgr.HomeworkMailSenderMgr;
 import com.example.demo.mgr.UserMgr;
 import com.example.demo.mgr.bo.UserBo;
 import org.springframework.stereotype.Repository;
@@ -18,8 +19,6 @@ public class UserMgrImpl implements UserMgr {
 
     @Resource
     UserMapper userMapper;
-    @Resource
-    HomeworkMailSenderMgrImpl homeworkMailSender;
     @Override
     public UserBo getUserInfoByAccount(String account, String password) {
         UserPo userPo = userMapper.getUserByAccount(account, password);

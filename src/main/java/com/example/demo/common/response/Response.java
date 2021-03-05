@@ -7,7 +7,6 @@ import java.io.Serializable;
 /**
  * 操作结果集封装
  *
- * @author zealon
  */
 @Data
 public class Response<T> implements Serializable {

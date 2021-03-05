@@ -13,12 +13,15 @@ import java.util.concurrent.TimeUnit;
 @Data
 public class DelayDataBo implements Delayed {
 
+    private Long publishId;
+
     private List<EmailContentBo> emailContentBoList;
 
     private long expire;
 
-    public DelayDataBo(long delay, List<EmailContentBo> emailContentBoList) {
-        expire = System.currentTimeMillis() + delay;
+    public DelayDataBo(long delay, Long publishId, List<EmailContentBo> emailContentBoList) {
+        expire = delay;
+        this.publishId = publishId;
         this.emailContentBoList = emailContentBoList;
     }
 

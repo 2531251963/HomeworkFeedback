@@ -1,6 +1,7 @@
 package com.example.demo.controller.vo;
 
 import com.example.demo.mgr.bo.HomeworkBo;
+import com.github.pagehelper.PageInfo;
 import lombok.Data;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class LibraryHomeworkVo {
 
 
     public List<LibraryHomeworkVo> convertFromHomeworkBoList(List<HomeworkBo> homeworkBos){
+
         return homeworkBos.stream().map(this::convertFromHomeworkBo).collect(Collectors.toList());
     }
 }

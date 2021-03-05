@@ -17,7 +17,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author liyihe
  * @description 钉钉播报
  * @date 2020/11/23 21:38
  **/

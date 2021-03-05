@@ -6,10 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
- * @author liyihe
- * @version 1.0
- * @className DateUtil
- * @description TODO
+ * @description 时间工具类
  * @date 2021/1/25 15:45
  **/
 public class DateUtil {
